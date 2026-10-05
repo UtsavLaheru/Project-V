@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dw56mb0ihviea" path="res://intractable_character.gd" id="4_82wni"]
 [ext_resource type="PackedScene" uid="uid://crntse0trm7pf" path="res://next_stage.tscn" id="5_g0thm"]
 [ext_resource type="Texture2D" uid="uid://dv86vlbelsct1" path="res://Other-Characters/Recruiter.png" id="5_gk0d5"]
+[ext_resource type="PackedScene" uid="uid://ycmldfwxn2jn" path="res://fin.tscn" id="7_82wni"]
 [ext_resource type="PackedScene" uid="uid://dl4074pcx1w60" path="res://Scenes/Mumbai_Chawl/walls.tscn" id="7_uno2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwanc"]
@@ -56,6 +57,7 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_udkbk")
 
 [node name="Next_Stage" parent="." unique_id=281194350 instance=ExtResource("5_g0thm")]
+Next_Stage = ExtResource("7_82wni")
 
 [node name="Walls" parent="." unique_id=1007017195 instance=ExtResource("7_uno2p")]
 
