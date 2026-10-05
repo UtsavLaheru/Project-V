@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c3idhv6ie0jkg"]
+
+[ext_resource type="Texture2D" uid="uid://bbcp0uaib4fkv" path="res://Misullenus_Art/bullet.png" id="1_v7oki"]
+[ext_resource type="Script" uid="uid://5xpqkwqgt4vy" path="res://bullet.gd" id="1_v8qja"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7oki"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b2rl"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7duk"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2bd8"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0pa3"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8qja"]
+atlas = ExtResource("1_v7oki")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtl8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7oki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4vbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b2rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7duk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2bd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0pa3")
+}],
+"loop": 1,
+"name": &"Shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8qja")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7oki"]
+size = Vector2(7, 5)
+
+[node name="Bullet" type="Area2D" unique_id=1572182718]
+script = ExtResource("1_v8qja")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1220946012]
+sprite_frames = SubResource("SpriteFrames_rtl8c")
+animation = &"Shooting"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609142997]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_v7oki")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

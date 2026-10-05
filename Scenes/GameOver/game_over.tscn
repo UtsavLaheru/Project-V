@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dtnmt4a4ykn5r"]
+
+[ext_resource type="Script" uid="uid://c2mb6akmh22kk" path="res://Scenes/GameOver/game_over.gd" id="1_ei7ey"]
+[ext_resource type="AudioStream" uid="uid://dy2i5woy1uff6" path="res://Audio/Music/GameOver.ogg" id="2_dncx1"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1386972939]
+script = ExtResource("1_ei7ey")
+
+[node name="Panel" type="Panel" parent="." unique_id=342929092]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="Panel" unique_id=1081706608]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.45600003
+anchor_right = 0.5
+anchor_bottom = 0.45600003
+offset_left = -43.5
+offset_top = -0.14001465
+offset_right = 43.5
+offset_bottom = 22.859985
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+
+[node name="ContinueLabel" type="Label" parent="Panel" unique_id=234766454]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.351
+anchor_top = 0.64400005
+anchor_right = 0.66700006
+anchor_bottom = 0.697
+offset_left = -0.14001465
+offset_top = 0.13998413
+offset_right = 0.1199646
+offset_bottom = -0.1800232
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press Space To Continue..."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=501985567]
+stream = ExtResource("2_dncx1")
+autoplay = true

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://rpf2wxx0v48h"]
+
+[ext_resource type="Script" uid="uid://clvs2pguqfwkm" path="res://Other-Characters/goons/goons.gd" id="1_15u6i"]
+[ext_resource type="Texture2D" uid="uid://bi1sb23mq3pv6" path="res://Other-Characters/goons/goons.png" id="1_rd1f0"]
+[ext_resource type="AudioStream" uid="uid://dfbvowx5tx5xh" path="res://Audio/Music/Walking.ogg" id="3_dvnrw"]
+[ext_resource type="AudioStream" uid="uid://bx030ptu1okww" path="res://Audio/Music/firing.ogg" id="4_pl0m0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15u6i"]
+size = Vector2(83.250015, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd1f0"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7ks3"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvnrw"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl0m0"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0tfr"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5u78"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmoms"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6if0"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15u6i"]
+atlas = ExtResource("1_rd1f0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eaptd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd1f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7ks3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvnrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl0m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0tfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5u78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmoms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6if0")
+}],
+"loop": 1,
+"name": &"Moving",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15u6i")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd1f0"]
+size = Vector2(13, 25)
+
+[node name="Goons" type="CharacterBody2D" unique_id=1345330478 groups=["Enemy"]]
+scale = Vector2(3.2, 3.2)
+script = ExtResource("1_15u6i")
+
+[node name="ShootingRange" type="Area2D" parent="." unique_id=907304682]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingRange" unique_id=1157940764]
+position = Vector2(34.7, -0.5)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_15u6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605484120]
+sprite_frames = SubResource("SpriteFrames_eaptd")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580475685]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_rd1f0")
+
+[node name="FiringPoint" type="Marker2D" parent="." unique_id=719872570]
+position = Vector2(11.5, -3.75)
+scale = Vector2(0.3, 0.3)
+
+[node name="Timer" type="Timer" parent="." unique_id=790837959]
+
+[node name="Moving" type="AudioStreamPlayer2D" parent="." unique_id=1318304190]
+stream = ExtResource("3_dvnrw")
+volume_db = 1.0
+attenuation = 12.55328
+bus = &"Sfx"
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="." unique_id=1712705026]
+stream = ExtResource("4_pl0m0")
+volume_db = 1.5
+pitch_scale = 1.05
+attenuation = 0.51763
+bus = &"Sfx"
+
+[connection signal="body_entered" from="ShootingRange" to="." method="_on_shooting_range_body_entered"]
+[connection signal="body_exited" from="ShootingRange" to="." method="_on_shooting_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

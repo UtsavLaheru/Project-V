@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ycmldfwxn2jn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8upip"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Fin" type="CanvasLayer" unique_id=2093277166]
+
+[node name="Panel" type="Panel" parent="." unique_id=1138210667]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8upip")

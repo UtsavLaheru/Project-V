@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://bpn6gg145i1b"]
+
+[ext_resource type="PackedScene" uid="uid://dukw4il2vlu1e" path="res://Player/player.tscn" id="1_hy888"]
+[ext_resource type="Texture2D" uid="uid://dxra4fnvyjrc5" path="res://Scenes/Mumbai_Chawl/Mumbai_Chawl_End.png" id="2_hy888"]
+[ext_resource type="Texture2D" uid="uid://02m4j5kx3itm" path="res://Tile/Mumbai_Chawl_Tile.png" id="3_gk0d5"]
+[ext_resource type="Script" uid="uid://dw56mb0ihviea" path="res://intractable_character.gd" id="4_82wni"]
+[ext_resource type="PackedScene" uid="uid://crntse0trm7pf" path="res://next_stage.tscn" id="5_g0thm"]
+[ext_resource type="Texture2D" uid="uid://dv86vlbelsct1" path="res://Other-Characters/Recruiter.png" id="5_gk0d5"]
+[ext_resource type="PackedScene" uid="uid://dl4074pcx1w60" path="res://Scenes/Mumbai_Chawl/walls.tscn" id="7_uno2p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwanc"]
+texture = ExtResource("3_gk0d5")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_gkhe4"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vwanc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udkbk"]
+size = Vector2(48.5, 23)
+
+[node name="Mumbai_Chawl" type="Node2D" unique_id=1387234506]
+
+[node name="Player" parent="." unique_id=728449882 instance=ExtResource("1_hy888")]
+position = Vector2(600, 388)
+can_jump = false
+canCrouch = false
+
+[node name="MumbaiChawlTile" type="Sprite2D" parent="." unique_id=1805964197]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+z_as_relative = false
+position = Vector2(269, 220)
+texture = ExtResource("2_hy888")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1772100372]
+position = Vector2(-2, 92)
+tile_map_data = PackedByteArray("AAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAHABMAAAAAAAAAAAD//xMAAAAAAAAAAAD+/xMAAAAAAAAAAAD9/xMAAAAAAAAAAAD8/xMAAAAAAAAAAAD7/xMAAAAAAAAAAAD6/xMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gkhe4")
+
+[node name="Recruiter_Character" type="Area2D" parent="." unique_id=332423248]
+position = Vector2(110, 394)
+rotation = -1.5707964
+script = ExtResource("4_82wni")
+dialogue = Array[String](["Well..This is F*cking Great", "Well,  Anyways I was going to Give you the Photo and Gun", "So, Here.."])
+
+[node name="Sprite2D" type="Sprite2D" parent="Recruiter_Character" unique_id=248340061]
+position = Vector2(0, 1)
+texture = ExtResource("5_gk0d5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Recruiter_Character" unique_id=1961238200]
+position = Vector2(4, 13.75)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_udkbk")
+
+[node name="Next_Stage" parent="." unique_id=281194350 instance=ExtResource("5_g0thm")]
+
+[node name="Walls" parent="." unique_id=1007017195 instance=ExtResource("7_uno2p")]
+
+[connection signal="body_entered" from="Recruiter_Character" to="Recruiter_Character" method="_on_body_entered"]
+[connection signal="body_exited" from="Recruiter_Character" to="Recruiter_Character" method="_on_body_exited"]
+
+[editable path="Player"]
+[editable path="Next_Stage"]

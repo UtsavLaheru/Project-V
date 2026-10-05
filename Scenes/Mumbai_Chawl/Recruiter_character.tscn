@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://nnbpjcr8pscm"]
+
+[ext_resource type="Script" uid="uid://dw56mb0ihviea" path="res://intractable_character.gd" id="1_bnpex"]
+[ext_resource type="Texture2D" uid="uid://dv86vlbelsct1" path="res://Other-Characters/Recruiter.png" id="2_bnpex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udkbk"]
+size = Vector2(85, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0b67"]
+size = Vector2(14, 23)
+
+[node name="Recruiter_Character" type="Area2D" unique_id=332423248]
+script = ExtResource("1_bnpex")
+dialogue = Array[String](["Hello There!!", "How You Doing :)", "Fine ?!?"])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=248340061]
+position = Vector2(0, 1)
+texture = ExtResource("2_bnpex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961238200]
+position = Vector2(35.5, 1.5)
+shape = SubResource("RectangleShape2D_udkbk")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1306137371]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=249586954]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_e0b67")
+debug_color = Color(4.813075e-08, 0.61056614, 0.3849931, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

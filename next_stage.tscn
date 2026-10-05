@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://crntse0trm7pf"]
+
+[ext_resource type="Script" uid="uid://d1gke0awwpiat" path="res://Scenes/Mumbai_Chawl/next_stage.gd" id="1_y8o65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f58kf"]
+size = Vector2(20, 151)
+
+[node name="Next_Stage" type="Area2D" unique_id=479259588]
+script = ExtResource("1_y8o65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657097997]
+position = Vector2(628, 342)
+shape = SubResource("RectangleShape2D_f58kf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

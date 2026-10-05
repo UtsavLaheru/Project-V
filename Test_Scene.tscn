@@ -1,0 +1,37 @@
+[gd_scene format=4 uid="uid://c1oit20y0xyj2"]
+
+[ext_resource type="Texture2D" uid="uid://02m4j5kx3itm" path="res://Tile/Mumbai_Chawl_Tile.png" id="1_4g0oj"]
+[ext_resource type="Script" uid="uid://mro8v4n6wdis" path="res://test_scene.gd" id="1_e0b67"]
+[ext_resource type="Texture2D" uid="uid://rudciwdmso0" path="res://Scenes/Mumbai_Chawl/Mumbai_Chawl_Tile.png" id="2_cart1"]
+[ext_resource type="PackedScene" uid="uid://dukw4il2vlu1e" path="res://Player/player.tscn" id="4_le5gb"]
+[ext_resource type="PackedScene" uid="uid://eohw5ah66n2w" path="res://intractable_character.tscn" id="6_m6eui"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cart1"]
+texture = ExtResource("1_4g0oj")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_3owqy"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_cart1")
+
+[node name="Test_Scene" type="Node2D" unique_id=255543852]
+script = ExtResource("1_e0b67")
+
+[node name="MumbaiChawlTile" type="Sprite2D" parent="." unique_id=150507294]
+visible = false
+position = Vector2(269, 213)
+texture = ExtResource("2_cart1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=508930446]
+position = Vector2(0, 85)
+tile_map_data = PackedByteArray("AAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAHABMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_3owqy")
+
+[node name="Player" parent="." unique_id=728449882 instance=ExtResource("4_le5gb")]
+position = Vector2(80, 285)
+
+[node name="Intractable_Character" parent="." unique_id=332423248 instance=ExtResource("6_m6eui")]
+position = Vector2(372, 376)
+
+[editable path="Player"]

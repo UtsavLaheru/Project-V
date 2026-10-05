@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://osijj48ekh48"]
+
+[ext_resource type="PackedScene" uid="uid://dukw4il2vlu1e" path="res://Player/player.tscn" id="1_f58kf"]
+[ext_resource type="Texture2D" uid="uid://rudciwdmso0" path="res://Scenes/Mumbai_Chawl/Mumbai_Chawl_Tile.png" id="4_vpdfk"]
+[ext_resource type="PackedScene" uid="uid://crntse0trm7pf" path="res://next_stage.tscn" id="5_1kmvi"]
+[ext_resource type="Texture2D" uid="uid://02m4j5kx3itm" path="res://Tile/Mumbai_Chawl_Tile.png" id="5_jt08u"]
+[ext_resource type="PackedScene" uid="uid://nnbpjcr8pscm" path="res://Scenes/Mumbai_Chawl/Recruiter_character.tscn" id="6_02xav"]
+[ext_resource type="PackedScene" uid="uid://b7nftc8qb1arx" path="res://Scenes/Metro/metro.tscn" id="6_6gpis"]
+[ext_resource type="PackedScene" uid="uid://dl4074pcx1w60" path="res://Scenes/Mumbai_Chawl/walls.tscn" id="7_6gpis"]
+[ext_resource type="AudioStream" uid="uid://ck3tpsbj4qei4" path="res://Audio/Music/Starting.ogg" id="8_vpdfk"]
+[ext_resource type="Script" uid="uid://bj02wlm4payri" path="res://Scenes/Mumbai_Chawl/firstDialogMusic.gd" id="9_jt08u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwanc"]
+texture = ExtResource("5_jt08u")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_gkhe4"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vwanc")
+
+[node name="Mumbai_Chawl" type="Node2D" unique_id=1387234506]
+
+[node name="Player" parent="." unique_id=728449882 instance=ExtResource("1_f58kf")]
+position = Vector2(600, 388)
+can_jump = false
+canCrouch = false
+
+[node name="MumbaiChawlTile" type="Sprite2D" parent="." unique_id=1805964197]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+z_as_relative = false
+position = Vector2(269, 220)
+texture = ExtResource("4_vpdfk")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1772100372]
+position = Vector2(-2, 92)
+tile_map_data = PackedByteArray("AAAAABMAAAAAAAAAAAABABMAAAAAAAAAAAACABMAAAAAAAAAAAADABMAAAAAAAAAAAAEABMAAAAAAAAAAAAFABMAAAAAAAAAAAAGABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAHABMAAAAAAAAAAAD//xMAAAAAAAAAAAD+/xMAAAAAAAAAAAD9/xMAAAAAAAAAAAD8/xMAAAAAAAAAAAD7/xMAAAAAAAAAAAD6/xMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gkhe4")
+
+[node name="Recruiter_Character" parent="." unique_id=332423248 instance=ExtResource("6_02xav")]
+position = Vector2(-49, 383)
+dialogue = Array[String](["Howdy :)", "Not Much Time To Talk...", "I Got A Contract For You, If Sucessful You Get Payed Big Time", "You Need To Kill A Gang Leader", "He is Always unarmed, And Does Not Have Any Guards, So The Job Is Pretty Easy.", "Well, That means less Work for You ;)", "And, The Target Will be At Metro Station, Here Take This Photo For Identification", "Now, Here's The Gun", "??", "Why Kill With This Gun, Well Because The Client Said Show -_-"])
+
+[node name="Next_Stage" parent="." unique_id=281194350 instance=ExtResource("5_1kmvi")]
+Next_Stage = ExtResource("6_6gpis")
+
+[node name="Walls" parent="." unique_id=1007017195 instance=ExtResource("7_6gpis")]
+
+[node name="FirstDialogMusic" type="AudioStreamPlayer2D" parent="." unique_id=78819928]
+process_mode = 3
+stream = ExtResource("8_vpdfk")
+volume_db = 0.1
+bus = &"Music"
+script = ExtResource("9_jt08u")
+
+[editable path="Player"]
+[editable path="Next_Stage"]
